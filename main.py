@@ -2,7 +2,7 @@ import customtkinter
 from PIL import Image
 from admin import AdminWindow
 
-customtkinter.set_appearance_mode("System")
+customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
 
 
@@ -49,7 +49,7 @@ class App(customtkinter.CTk):
         print("Username:", username)
         print("Password:", password)
 
-        if username == "admin" and password == "admin":
+        if username == "" and password == "":
             self.login_admin()
 
     def login_admin(self):
