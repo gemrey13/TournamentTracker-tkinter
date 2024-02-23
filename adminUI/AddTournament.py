@@ -1,11 +1,12 @@
 import customtkinter
 import json
+import CTkTable
 
 
 class AddTournamentWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.geometry("500x300")
+        self.geometry("500x500")
         self.title("Tournament Tracker | Add Tournament")
         self.after(250, lambda: self.iconbitmap("./images/run.ico"))
         self.resizable(False, False)
@@ -28,8 +29,12 @@ class AddTournamentWindow(customtkinter.CTkToplevel):
         self.add_tournament = customtkinter.CTkButton(self, text="add tournament", command=self.save_data)
         self.add_tournament.grid(row=2, column=0, columnspan=2, padx=20, pady=40, sticky="ew")
 
+        table_data = [["Tournament Name"], []]
+        self.table = CTkTable.CTkTable(self, row=1, column=1, values=table_data, header_color="#445463", text_color="white")
+        self.table.grid(row=3, column=0, columnspan=2, sticky="n")
+
     def save_team(self):
-        value = self.add_team_entry.get()
+        value = self.add_team_entry.get().title()
         print(value)
         teams = self.tournament_data["teams"]
         if value == "":
@@ -43,9 +48,11 @@ class AddTournamentWindow(customtkinter.CTkToplevel):
                 print("Similar team name")
                 return False
         self.tournament_data["teams"].append(value)
+        self.table.add_row([value], 1)
 
     def save_tournament_name(self):
-        value = self.add_tournament_name.get()
+        value = self.add_tournament_name.get().title()
+        self.table.edit_row(0, value)
         self.tournament_data["tournament_name"] = value
         print(value)
 
