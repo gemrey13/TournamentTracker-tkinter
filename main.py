@@ -1,6 +1,8 @@
 import customtkinter
 from PIL import Image
 from admin import AdminWindow
+import json
+import os
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
@@ -30,6 +32,8 @@ class LoginFrame(customtkinter.CTkFrame):
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
+        self.DB_FILE = "db.json"
+        self.initialize_db()
         self.geometry("800x600")
         self.title("Tournament Tracker")
         self.iconbitmap("./images/run.ico")
@@ -56,8 +60,11 @@ class App(customtkinter.CTk):
         self.admin_window = AdminWindow(self)
         self.withdraw()
 
-    def logout(self):
-        self.deiconify()
+    def initialize_db(self):
+        if not os.path.exists(self.DB_FILE):
+            with open(self.DB_FILE, "w") as f:
+                data = {"tournament_tracker": []}
+                json.dump(data, f)
 
 
 if __name__ == "__main__":

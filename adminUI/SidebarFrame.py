@@ -1,6 +1,7 @@
 import os
 import customtkinter
 from PIL import Image
+from .AddTournament import AddTournamentWindow
 
 
 class Sidebar(customtkinter.CTkFrame):
@@ -16,7 +17,7 @@ class Sidebar(customtkinter.CTkFrame):
 
         self.add_team_btn = customtkinter.CTkButton(self, text="Add Team", command=self.sidebar_button_event)
         self.add_team_btn.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
-        self.add_tournament_btn = customtkinter.CTkButton(self, text="Add Tournament", command=self.sidebar_button_event)
+        self.add_tournament_btn = customtkinter.CTkButton(self, text="Add Tournament", command=self.add_tournament)
         self.add_tournament_btn.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
 
         self.add_sport_btn = customtkinter.CTkButton(self, text="Add Sport", command=self.sidebar_button_event)
@@ -36,6 +37,10 @@ class Sidebar(customtkinter.CTkFrame):
     def logout(self):
         self.master.master.logout()
         self.master.destroy()
+
+    def add_tournament(self):
+        self.add_tournament_window = AddTournamentWindow(self)
+        self.master.iconify()
 
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")

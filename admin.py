@@ -17,7 +17,6 @@ class AdminWindow(customtkinter.CTkToplevel):
         self.grid_columnconfigure((2, 3), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
-        self.config(width=100)
         images_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images")
         self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(images_path, "run.ico")), size=(26, 26))
 
