@@ -15,16 +15,8 @@ class Sidebar(customtkinter.CTkFrame):
         )
         self.logo_label.grid(row=0, column=0, padx=20, pady=30)
 
-        self.add_team_btn = customtkinter.CTkButton(self, text="Add Team", command=self.sidebar_button_event)
-        self.add_team_btn.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
         self.add_tournament_btn = customtkinter.CTkButton(self, text="Add Tournament", command=self.add_tournament)
         self.add_tournament_btn.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
-
-        self.add_sport_btn = customtkinter.CTkButton(self, text="Add Sport", command=self.sidebar_button_event)
-        self.add_sport_btn.grid(row=3, column=0, padx=20, pady=10, sticky="ew")
-
-        # self.string_input_button = customtkinter.CTkButton(self, text="Open CTkInputDialog", command=self.open_input_dialog_event)
-        # self.string_input_button.grid(row=4, column=0, padx=20, pady=(10, 10))
 
         self.appearance_mode_label = customtkinter.CTkLabel(self, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))

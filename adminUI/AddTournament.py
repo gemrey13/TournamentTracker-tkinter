@@ -5,30 +5,28 @@ import json
 class AddTournamentWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.geometry("700x400")
+        self.geometry("500x300")
         self.title("Tournament Tracker | Add Tournament")
         self.after(250, lambda: self.iconbitmap("./images/run.ico"))
         self.resizable(False, False)
         self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure((2, 3), weight=0)
-        self.grid_rowconfigure((0, 1, 2), weight=1)
 
         self.tournament_data = {"tournament_name": "", "teams": []}
 
         self.add_tournament_name = customtkinter.CTkEntry(self, placeholder_text="add tournament name")
-        self.add_tournament_name.grid(row=0, column=0)
+        self.add_tournament_name.grid(row=0, column=0, padx=20, pady=30)
 
         self.add_tournament_name_btn = customtkinter.CTkButton(self, text="add tournament name", command=self.save_tournament_name)
-        self.add_tournament_name_btn.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
+        self.add_tournament_name_btn.grid(row=0, column=1, padx=20, pady=10, sticky="ew")
 
         self.add_team_entry = customtkinter.CTkEntry(self, placeholder_text="add team")
-        self.add_team_entry.grid(row=2, column=0)
+        self.add_team_entry.grid(row=1, column=0, padx=20, pady=30)
 
         self.add_team_btn = customtkinter.CTkButton(self, text="add team", command=self.save_team)
-        self.add_team_btn.grid(row=3, column=0, padx=20, pady=10, sticky="ew")
+        self.add_team_btn.grid(row=1, column=1, padx=20, pady=10, sticky="ew")
 
         self.add_tournament = customtkinter.CTkButton(self, text="add tournament", command=self.save_data)
-        self.add_tournament.grid(row=0, column=1, padx=20, pady=10, sticky="ew")
+        self.add_tournament.grid(row=2, column=0, columnspan=2, padx=20, pady=40, sticky="ew")
 
     def save_team(self):
         value = self.add_team_entry.get()
