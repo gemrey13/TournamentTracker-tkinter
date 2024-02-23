@@ -1,4 +1,5 @@
 import customtkinter
+import CTkTable
 from PIL import Image
 import os
 from adminUI.SidebarFrame import HomeFrame, SecondFrame, ThirdFrame, Sidebar
@@ -7,7 +8,7 @@ from adminUI.SidebarFrame import HomeFrame, SecondFrame, ThirdFrame, Sidebar
 class AdminWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.geometry("800x600")
+        self.geometry("900x600")
         self.title("Tournament Tracker | Admin")
         self.after(250, lambda: self.iconbitmap("./images/run.ico"))
         self.resizable(False, False)
@@ -33,6 +34,13 @@ class AdminWindow(customtkinter.CTkToplevel):
         self.sidebar_frame = Sidebar(self, width=100, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
+
+        self.today_game = customtkinter.CTkLabel(self, text="Today's Games", font=customtkinter.CTkFont(size=25, weight="bold"))
+        self.today_game.grid(row=0, column=1)
+
+        value = [["Home", "Away", "Round", "Winner"], []]
+        self.table = CTkTable.CTkTable(self, row=5, column=4, values=value)
+        self.table.grid(row=1, column=1, sticky="n")
 
     #     self.navigation_frame_label = customtkinter.CTkLabel(
     #         self, text="  Image Example", image=self.logo_image, compound="left", font=customtkinter.CTkFont(size=15, weight="bold")
