@@ -5,6 +5,7 @@ import os
 from adminUI.SidebarFrame import HomeFrame, SecondFrame, ThirdFrame, Sidebar
 
 
+# sadsa
 class AdminWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
